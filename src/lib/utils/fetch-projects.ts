@@ -1,6 +1,8 @@
+import { server } from "base/config/env";
+
 export async function loadProjects() {
   const res = await fetch(
-    `${process.env.BASE_URL}/api/projects`
+    `${server}/api/projects`
   );
   const data = await res.json();
 
