@@ -1,13 +1,10 @@
 import Head from 'next/head';
-import { ProjectItem } from 'components/Porjects';
-import { loadProjects } from 'lib/utils/fetch-projects';
+import { motion } from 'framer-motion';
 import Header from 'components/common/Header';
 import Footer from 'components/common/Footer';
-import { GenericButton } from 'components/common/Button';
-import { motion } from 'framer-motion';
-import Link from 'next/link';
+import { loadProjects } from 'lib/utils/fetch-projects';
 
-const ThankYou = ({ PROJECTS }: any) => {
+const ThankYou = ({ PROJECT }: any) => {
   const heading = {
     hidden: {
       opacity: 0,
@@ -59,18 +56,18 @@ const ThankYou = ({ PROJECTS }: any) => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header PROJECTS={PROJECTS} />
+      <Header PROJECT={PROJECT} />
       <main className="container flex h-full items-center justify-center text-center">
         <section className="flex flex-col space-y-6">
           <motion.h1
             initial="hidden"
             animate="visible"
             variants={heading}
-            className="text-5xl font-bold sm:text-6xl max-w-md"
+            className="max-w-md text-5xl font-bold sm:text-6xl"
           >
             Thank you for getting in touch!
           </motion.h1>
-            <br />
+          <br />
           <motion.p
             initial="hidden"
             animate="visible"
@@ -93,11 +90,11 @@ const ThankYou = ({ PROJECTS }: any) => {
 export async function getServerSideProps() {
   const data = await loadProjects();
 
-  const PROJECTS = data.projects;
+  const PROJECT = data.project;
 
   return {
     props: {
-      PROJECTS,
+      PROJECT,
     },
   };
 }

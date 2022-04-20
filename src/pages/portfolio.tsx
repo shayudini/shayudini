@@ -1,10 +1,10 @@
 import Head from 'next/head';
-import { ProjectItem } from 'components/Porjects';
-import { loadProjects } from 'lib/utils/fetch-projects';
 import Header from 'components/common/Header';
 import Footer from 'components/common/Footer';
+import { ProjectItem } from 'components/Porjects';
+import { loadProjects } from 'lib/utils/fetch-projects';
 
-const Portfolio = ({ PROJECTS }: any) => {
+const Portfolio = ({ PROJECTS, PROJECT }: any) => {
   return (
     <>
       <Head>
@@ -15,7 +15,7 @@ const Portfolio = ({ PROJECTS }: any) => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header PROJECTS={PROJECTS} />
+      <Header PROJECT={PROJECT} />
       <main className="container">
         <section className="pt-8 md:px-16">
           <div className=" prose-base prose-stone dark:prose-invert w-full">
@@ -53,10 +53,12 @@ export async function getServerSideProps() {
   const data = await loadProjects();
 
   const PROJECTS = data.projects;
+  const PROJECT = data.project;
 
   return {
     props: {
       PROJECTS,
+      PROJECT,
     },
   };
 }

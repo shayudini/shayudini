@@ -5,7 +5,7 @@ import Header from 'components/common/Header';
 import Footer from 'components/common/Footer';
 import { loadProjects } from 'lib/utils/fetch-projects';
 
-const Home: NextPage = ({ PROJECTS }: any) => {
+const Home: NextPage = ({ PROJECT }: any) => {
   return (
     <>
       <Head>
@@ -16,7 +16,7 @@ const Home: NextPage = ({ PROJECTS }: any) => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header PROJECTS={PROJECTS} />
+      <Header PROJECT={PROJECT} />
       <About />
       <Footer />
     </>
@@ -24,12 +24,11 @@ const Home: NextPage = ({ PROJECTS }: any) => {
 };
 export async function getServerSideProps() {
   const data = await loadProjects();
-
-  const PROJECTS = data.projects;
+  const PROJECT = data.project;
 
   return {
     props: {
-      PROJECTS,
+      PROJECT,
     },
   };
 }

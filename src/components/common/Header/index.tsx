@@ -8,7 +8,7 @@ import useWindowSize from 'lib/hooks/useWindowSize';
 import { menu, social } from 'lib/constants';
 import { GlobalContext } from 'lib/context';
 
-const Header = ({ PROJECTS }: any) => {
+const Header = ({ PROJECT }: any) => {
   const { state, dispatch } = useContext(GlobalContext);
   const { width } = useWindowSize();
 
@@ -119,52 +119,46 @@ const Header = ({ PROJECTS }: any) => {
                 );
               })}
             </ul>
-            {PROJECTS.map((project: any) => {
-              return (
-                <div
-                  className={`relative h-52 w-full max-w-xs`}
-                  key={project._id}
-                >
-                  <div className="absolute inset-0 z-30 flex flex-col justify-between bg-stone-900/60 p-4 text-stone-50">
-                    <h4 className="font-semibold">
-                      Most Recent
-                    </h4>
-
-                    <div className="mt-2 flex justify-evenly space-x-2">
-                      <Link href={project.code} passHref>
-                        <a
-                          target={'_blank'}
-                          className="flex items-center rounded-sm border-2 border-stone-900 bg-stone-900 px-3 py-1 text-sm tracking-wider text-stone-100 transition-all duration-200 hover:bg-stone-100 hover:text-stone-900 focus:border-stone-900 focus:outline-none focus:ring-2 focus:ring-stone-900 focus:ring-offset-2 dark:border-stone-100 dark:bg-stone-100 dark:text-stone-900 dark:hover:border-stone-100 dark:hover:bg-stone-900 dark:hover:text-stone-100 dark:focus:border-stone-900 dark:focus:ring-stone-900 md:text-base"
-                          onClick={() =>
-                            dispatch({ type: 'Reset' })
-                          }
-                        >
-                          <FiLink className="mr-2 text-xs" />
-                          Demo
-                        </a>
-                      </Link>
-                      <Link href={project.demo} passHref>
-                        <a
-                          target={'_blank'}
-                          className="flex items-center rounded-sm border-2 border-stone-900 bg-stone-900 px-3 py-1 text-sm tracking-wider text-stone-100 transition-all duration-200 hover:bg-stone-100 hover:text-stone-900 focus:border-stone-900 focus:outline-none focus:ring-2 focus:ring-stone-900 focus:ring-offset-2 dark:border-stone-100 dark:bg-stone-100 dark:text-stone-900 dark:hover:border-stone-100 dark:hover:bg-stone-900 dark:hover:text-stone-100 dark:focus:border-stone-900 dark:focus:ring-stone-900 md:text-base"
-                          onClick={() =>
-                            dispatch({ type: 'Reset' })
-                          }
-                        >
-                          <FiCode className="mr-2 text-xs" />
-                          Code
-                        </a>
-                      </Link>
-                    </div>
-                  </div>
-                  <Image
-                    src={project.images[0]}
-                    layout="fill"
-                    alt="someimage"
-                  />
+            <div
+              className={`relative h-52 w-full max-w-xs`}
+            >
+              <div className="absolute inset-0 z-30 flex flex-col justify-between bg-stone-900/60 p-4 text-stone-50">
+                <h4 className="font-semibold">
+                  Most Recent
+                </h4>
+                <div className="mt-2 flex justify-evenly space-x-2">
+                  <Link href={PROJECT.code} passHref>
+                    <a
+                      target={'_blank'}
+                      className="flex items-center rounded-sm border-2 border-stone-900 bg-stone-900 px-3 py-1 text-sm tracking-wider text-stone-100 transition-all duration-200 hover:bg-stone-100 hover:text-stone-900 focus:border-stone-900 focus:outline-none focus:ring-2 focus:ring-stone-900 focus:ring-offset-2 dark:border-stone-100 dark:bg-stone-100 dark:text-stone-900 dark:hover:border-stone-100 dark:hover:bg-stone-900 dark:hover:text-stone-100 dark:focus:border-stone-900 dark:focus:ring-stone-900 md:text-base"
+                      onClick={() =>
+                        dispatch({ type: 'Reset' })
+                      }
+                    >
+                      <FiLink className="mr-2 text-xs" />
+                      Demo
+                    </a>
+                  </Link>
+                  <Link href={PROJECT.demo} passHref>
+                    <a
+                      target={'_blank'}
+                      className="flex items-center rounded-sm border-2 border-stone-900 bg-stone-900 px-3 py-1 text-sm tracking-wider text-stone-100 transition-all duration-200 hover:bg-stone-100 hover:text-stone-900 focus:border-stone-900 focus:outline-none focus:ring-2 focus:ring-stone-900 focus:ring-offset-2 dark:border-stone-100 dark:bg-stone-100 dark:text-stone-900 dark:hover:border-stone-100 dark:hover:bg-stone-900 dark:hover:text-stone-100 dark:focus:border-stone-900 dark:focus:ring-stone-900 md:text-base"
+                      onClick={() =>
+                        dispatch({ type: 'Reset' })
+                      }
+                    >
+                      <FiCode className="mr-2 text-xs" />
+                      Code
+                    </a>
+                  </Link>
                 </div>
-              );
-            })}
+              </div>
+              <Image
+                src={PROJECT.images[0]}
+                layout="fill"
+                alt="someimage"
+              />
+            </div>
           </div>
         ) : (
           <div
@@ -229,51 +223,46 @@ const Header = ({ PROJECTS }: any) => {
                 })}
               </ul>
             </div>
-            {PROJECTS.map((project: any) => {
-              return (
-                <div
-                  className={`relative mx-auto h-52 w-full max-w-sm`}
-                  key={project._id}
-                >
-                  <div className="absolute inset-0 z-30 flex flex-col justify-between bg-stone-900/60 p-4 text-stone-50">
-                    <h4 className="font-semibold">
-                      Most Recent
-                    </h4>
-                    <div className="mt-2 flex justify-evenly space-x-2">
-                      <Link href={project.code} passHref>
-                        <a
-                          target={'_blank'}
-                          className="flex items-center rounded-sm border-2 border-stone-900 bg-stone-900 px-3 py-1 text-sm tracking-wider text-stone-100 transition-all duration-200 hover:bg-stone-100 hover:text-stone-900 focus:border-stone-900 focus:outline-none focus:ring-2 focus:ring-stone-900 focus:ring-offset-2 dark:border-stone-100 dark:bg-stone-100 dark:text-stone-900 dark:hover:border-stone-100 dark:hover:bg-stone-900 dark:hover:text-stone-100 dark:focus:border-stone-900 dark:focus:ring-stone-900 md:text-base"
-                          onClick={() =>
-                            dispatch({ type: 'Reset' })
-                          }
-                        >
-                          <FiLink className="mr-2 text-xs" />
-                          Demo
-                        </a>
-                      </Link>
-                      <Link href={project.demo} passHref>
-                        <a
-                          target={'_blank'}
-                          className="flex items-center rounded-sm border-2 border-stone-900 bg-stone-900 px-3 py-1 text-sm tracking-wider text-stone-100 transition-all duration-200 hover:bg-stone-100 hover:text-stone-900 focus:border-stone-900 focus:outline-none focus:ring-2 focus:ring-stone-900 focus:ring-offset-2 dark:border-stone-100 dark:bg-stone-100 dark:text-stone-900 dark:hover:border-stone-100 dark:hover:bg-stone-900 dark:hover:text-stone-100 dark:focus:border-stone-900 dark:focus:ring-stone-900 md:text-base"
-                          onClick={() =>
-                            dispatch({ type: 'Reset' })
-                          }
-                        >
-                          <FiCode className="mr-2 text-xs" />
-                          Code
-                        </a>
-                      </Link>
-                    </div>
-                  </div>
-                  <Image
-                    src={project.images[0]}
-                    layout="fill"
-                    alt="someimage"
-                  />
+            <div
+              className={`relative mx-auto h-52 w-full max-w-sm`}
+            >
+              <div className="absolute inset-0 z-30 flex flex-col justify-between bg-stone-900/60 p-4 text-stone-50">
+                <h4 className="font-semibold">
+                  Most Recent
+                </h4>
+                <div className="mt-2 flex justify-evenly space-x-2">
+                  <Link href={PROJECT.code} passHref>
+                    <a
+                      target={'_blank'}
+                      className="flex items-center rounded-sm border-2 border-stone-900 bg-stone-900 px-3 py-1 text-sm tracking-wider text-stone-100 transition-all duration-200 hover:bg-stone-100 hover:text-stone-900 focus:border-stone-900 focus:outline-none focus:ring-2 focus:ring-stone-900 focus:ring-offset-2 dark:border-stone-100 dark:bg-stone-100 dark:text-stone-900 dark:hover:border-stone-100 dark:hover:bg-stone-900 dark:hover:text-stone-100 dark:focus:border-stone-900 dark:focus:ring-stone-900 md:text-base"
+                      onClick={() =>
+                        dispatch({ type: 'Reset' })
+                      }
+                    >
+                      <FiLink className="mr-2 text-xs" />
+                      Demo
+                    </a>
+                  </Link>
+                  <Link href={PROJECT.demo} passHref>
+                    <a
+                      target={'_blank'}
+                      className="flex items-center rounded-sm border-2 border-stone-900 bg-stone-900 px-3 py-1 text-sm tracking-wider text-stone-100 transition-all duration-200 hover:bg-stone-100 hover:text-stone-900 focus:border-stone-900 focus:outline-none focus:ring-2 focus:ring-stone-900 focus:ring-offset-2 dark:border-stone-100 dark:bg-stone-100 dark:text-stone-900 dark:hover:border-stone-100 dark:hover:bg-stone-900 dark:hover:text-stone-100 dark:focus:border-stone-900 dark:focus:ring-stone-900 md:text-base"
+                      onClick={() =>
+                        dispatch({ type: 'Reset' })
+                      }
+                    >
+                      <FiCode className="mr-2 text-xs" />
+                      Code
+                    </a>
+                  </Link>
                 </div>
-              );
-            })}
+              </div>
+              <Image
+                src={PROJECT.images[0]}
+                layout="fill"
+                alt="someimage"
+              />
+            </div>
           </div>
         )}
       </nav>
